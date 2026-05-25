@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人間心理の態度・言葉と注意点</title>
+<style>
+  :root {
+    /* ライトモード - カラーパレット */
+    --bg-base: #f4f7f6;
+    --bg-content: #ffffff;
+    --text-main: #2d3748;
+    --text-sub: #4a5568;
+    --text-muted: #718096;
+    --border-color: #e2e8f0;
+    
+    /* テーマカラー */
+    --primary: #3182ce;
+    --primary-bg: #ebf8ff;
+    --primary-border: #bee3f8;
+    
+    --danger: #c0514f;
+    --danger-bg: #fff5f5;
+    --danger-border: #f5c6c5;
+    
+    --warning: #dd6b20;
+    --warning-bg: #fffff0;
+    --warning-border: #fefcbf;
+    
+    --heart: #d53f8c;
+    --heart-bg: #fff5f7;
+    --heart-border: #fed7e2;
+    
+    --safe: #38a169;
+    --safe-bg: #f0fff4;
+    --safe-border: #c6f6d5;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05), 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* ダークモード - カラーパレット */
+      --bg-base: #111827;
+      --bg-content: #1f2937;
+      --text-main: #f9fafb;
+      --text-sub: #d1d5db;
+      --text-muted: #9ca3af;
+      --border-color: #374151;
+      
+      /* テーマカラー (Dark) */
+      --primary: #60a5fa;
+      --primary-bg: #1e3a8a;
+      --primary-border: #1e40af;
+      
+      --danger: #e08585;
+      --danger-bg: #7f1d1d;
+      --danger-border: #991b1b;
+      
+      --warning: #fbbf24;
+      --warning-bg: #78350f;
+      --warning-border: #92400e;
+      
+      --heart: #f472b6;
+      --heart-bg: #831843;
+      --heart-border: #9d174d;
+      
+      --safe: #34d399;
+      --safe-bg: #064e3b;
+      --safe-border: #065f46;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--primary);
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 40px 0 20px;
+    padding: 12px 16px;
+    background-color: var(--bg-content);
+    border-left: 6px solid var(--primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  h2.danger-title {
+    border-left-color: var(--danger);
+  }
+  
+  h2.heart-title {
+    border-left-color: var(--heart);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--primary);
+  }
+
+  p {
+    margin-bottom: 16px;
+  }
+  
+  .lead {
+    background-color: var(--bg-content);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 32px;
+    border-top: 4px solid var(--heart);
+  }
+
+  .lead strong {
+    color: var(--heart);
+  }
+
+  /* Layout & Components */
+  .grid {
+    display: grid;
+    gap: 20px;
+  }
+  
+  @media (min-width: 600px) {
+    .grid-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .card {
+    background-color: var(--bg-content);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+  }
+
+  /* Flowchart / 基本構造 */
+  .flow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .flow-step {
+    background-color: var(--bg-content);
+    border: 2px solid var(--primary-border);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 200px;
+    z-index: 2;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s;
+  }
+
+  .flow-step.highlight {
+    background-color: var(--heart-bg);
+    border-color: var(--heart);
+    color: var(--heart);
+  }
+
+  .flow-arrow {
+    height: 30px;
+    width: 2px;
+    background-color: var(--primary-border);
+    margin: 4px 0;
+    position: relative;
+  }
+  
+  .flow-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -4px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-border) transparent transparent transparent;
+  }
+
+  .point-balloon {
+    background-color: var(--warning-bg);
+    border: 2px solid var(--warning);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    font-size: 0.9rem;
+    margin-top: 16px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Quotes / セリフ */
+  .quote-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .quote {
+    background-color: var(--primary-bg);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--primary-border);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .quote.danger-quote {
+    background-color: var(--danger-bg);
+    border-color: var(--danger-border);
+    color: var(--danger);
+    font-weight: bold;
+  }
+
+  /* Alert & Notes */
+  .alert {
+    background-color: var(--danger-bg);
+    border-left: 4px solid var(--danger);
+    padding: 12px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: 16px;
+    font-size: 0.95rem;
+  }
+  
+  .alert-title {
+    color: var(--danger);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .note-safe {
+    background-color: var(--safe-bg);
+    border-left: 4px solid var(--safe);
+    padding: 12px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: 16px;
+    font-size: 0.95rem;
+  }
+
+  .note-safe-title {
+    color: var(--safe);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  /* Lists */
+  ul.check-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul.check-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 8px;
+  }
+
+  ul.check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--safe);
+    font-weight: bold;
+  }
+
+  ul.cross-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul.cross-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 8px;
+  }
+
+  ul.cross-list li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--danger);
+    font-weight: bold;
+  }
+
+  /* Combination Formula */
+  .combo-box {
+    background-color: var(--danger-bg);
+    border: 2px dashed var(--danger);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    text-align: center;
+  }
+  
+  .combo-formula {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .combo-item {
+    background-color: var(--bg-content);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--danger-border);
+    color: var(--danger);
+  }
+  
+  .combo-plus {
+    color: var(--text-sub);
+  }
+  
+  .combo-result {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--danger-border);
+    font-size: 1.2rem;
+    color: var(--danger);
+    font-weight: bold;
+  }
+
+  /* Comparison */
+  .comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  
+  @media (min-width: 500px) {
+    .comparison {
+      flex-direction: row;
+    }
+    .comp-item {
+      flex: 1;
+    }
+  }
+
+  .comp-item {
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    border: 1px solid;
+  }
+  
+  .comp-normal {
+    background-color: var(--bg-base);
+    border-color: var(--border-color);
+  }
+  
+  .comp-special {
+    background-color: var(--heart-bg);
+    border-color: var(--heart-border);
+    color: var(--heart);
+    font-weight: bold;
+  }
+
+  /* SVGs */
+  svg.icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  
+  /* Utilities */
+  .text-danger { color: var(--danger); }
+  .text-primary { color: var(--primary); }
+  .text-heart { color: var(--heart); }
+  .text-bold { font-weight: bold; }
+  .text-center { text-align: center; }
+  .mt-4 { margin-top: 16px; }
+  .mb-4 { margin-bottom: 16px; }
+
+  /* Summary Box */
+  .summary-box {
+    background-color: var(--bg-content);
+    border: 4px solid var(--primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .summary-conclusion {
+    background-color: var(--primary-bg);
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    margin-top: 24px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary);
+  }
+</style>
+</head>
+<body>
+
+<main class="container">
+  <h1>本気になりやすい<br>態度・言葉</h1>
+
+  <div class="lead">
+    <p>女性が本気になりやすいのは、男性が<strong>「安心感・理解・特別感・尊敬・弱さの共有」</strong>を同時に与えた時です。</p>
+    <p>特に既婚者同士、またはどちらかが既婚の場合は、男性側が軽い気持ちでも、女性側は深く感情を動かされることがあります。</p>
+  </div>
+
+  <!-- セクション1: 基本構造 -->
+  <h2 class="heart-title">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    基本構造（心の動き）
+  </h2>
+  <div class="card">
+    <p class="text-sub mb-4">女性が本気になりやすい流れは、だいたい以下のように進みます。</p>
+    <div class="flow-container">
+      <div class="flow-step">優しくされる</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">安心する</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">自分を理解してくれていると感じる</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step highlight">自分だけ特別に扱われていると感じる</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">もっと話したくなる</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">会うことが楽しみになる</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">他の男性より心の距離が近くなる</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step highlight">本気になる</div>
+    </div>
+    <div class="point-balloon">
+      💡 ポイント：単なる優しさではなく、「この人は私を特別に見てくれている」と感じること
+    </div>
+  </div>
+
+  <!-- セクション2: 男性が取る態度 -->
+  <h2>
+    <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    女性が本気になりやすい態度
+  </h2>
+  <div class="grid">
+    <!-- 態度1 -->
+    <article class="card">
+      <h3>1. 否定せず、深く話を聞く</h3>
+      <p class="text-sub">女性が悩みや弱音を話した時に落ち着いて受け止めると、強い安心感が生まれます。特に仕事・家庭・人間関係で弱っている時は深く刺さります。</p>
+      <div class="quote-list">
+        <span class="quote">それは大変だったね</span>
+        <span class="quote">よく頑張ってると思う</span>
+        <span class="quote">無理してない？</span>
+        <span class="quote">ちゃんと聞くよ</span>
+      </div>
+      <div class="alert">
+        <div class="alert-title"><svg class="icon" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>注意点</div>
+        相談相手になりすぎないこと。毎回深く受け止めると「この人だけが分かってくれる」と感じやすくなります。
+      </div>
+    </article>
+
+    <!-- 態度2 -->
+    <article class="card">
+      <h3>2. 細かいことを覚えている</h3>
+      <p class="text-sub">自分が以前話したことを覚えてもらっていると、特別感を抱きやすいです。</p>
+      <div class="quote-list">
+        <span class="quote">前に〇〇って言ってたよね</span>
+        <span class="quote">あれ、その後どうなった？</span>
+        <span class="quote">〇〇好きだったよね</span>
+      </div>
+      <div class="alert">
+        <div class="alert-title"><svg class="icon" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>注意点</div>
+        頻度や温度感が高いと「私のことをちゃんと見てくれている」と感じ、本気になりやすくなります。
+      </div>
+    </article>
+
+    <!-- 態度3 -->
+    <article class="card">
+      <h3>3. 女性として丁寧に扱う</h3>
+      <p class="text-sub">既婚女性が家庭内で「妻」「母」として扱われがちな中、女性として丁寧に扱われると気持ちが動きやすくなります。</p>
+      <div class="quote-list">
+        <span class="quote">今日の雰囲気、似合ってるね</span>
+        <span class="quote">そういうところ素敵だと思う</span>
+        <span class="quote">一緒にいると落ち着く</span>
+      </div>
+      <div class="alert">
+        <div class="alert-title"><svg class="icon" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>注意点</div>
+        褒め方が恋愛寄りになりすぎると、相手に期待を持たせてしまいます。
+      </div>
+    </article>
+
+    <!-- 態度4 -->
+    <article class="card">
+      <h3>4. 余裕があり、頼れる態度を見せる</h3>
+      <p class="text-sub">落ち着きや余裕に安心感を抱きます。年下・おとなしい・弱っている女性から特に魅力的に見えます。</p>
+      <ul class="check-list mt-4 mb-4">
+        <li>焦らない・怒らない</li>
+        <li>さりげなく会計する</li>
+        <li>困った時に助ける</li>
+      </ul>
+      <div class="alert">
+        <div class="alert-title"><svg class="icon" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>注意点</div>
+        助けすぎると、依存や恋愛感情に変わることがあります。
+      </div>
+    </article>
+
+    <!-- 態度5 -->
+    <article class="card">
+      <h3>5. 2人だけの秘密や特別な空気を作る</h3>
+      <p class="text-sub">女性が本気になりやすい要素として<strong class="text-danger">かなり強い</strong>です。</p>
+      <div class="quote-list">
+        <span class="quote">これは〇〇さんだから話せる</span>
+        <span class="quote">他の人には言ってないけど</span>
+        <span class="quote">君だけは分かってくれる</span>
+      </div>
+      <div class="alert">
+        <div class="alert-title"><svg class="icon" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>非常に危険</div>
+        既婚が絡む場合、軽く言ったつもりでも相手は深く受け取り、「私は特別なんだ」と思い込みます。
+      </div>
+    </article>
+  </div>
+
+  <!-- セクション3: 危険な言葉 -->
+  <h2 class="danger-title">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+    女性が本気になりやすい言葉
+  </h2>
+  <div class="card">
+    <p class="mb-4">以下の言葉は、相手に<strong class="text-danger">期待・罪悪感・苦しさ</strong>を同時に生みやすい、非常に危険な言葉です。責任を取れないなら使わないでください。</p>
+    
+    <div class="grid grid-2">
+      <div>
+        <h3 class="text-primary">強い言葉</h3>
+        <ul class="cross-list">
+          <li>〇〇さんと話してると落ち着く</li>
+          <li>つい本音を話してしまう</li>
+          <li>前から素敵な人だと思ってた</li>
+          <li>また会いたい</li>
+          <li>〇〇さんは特別</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-danger">⚠️ 危険度MAX ⚠️</h3>
+        <div class="quote-list">
+          <span class="quote danger-quote">もっと早く出会ってたらよかった</span>
+          <span class="quote danger-quote">俺が独身だったら好きになってた</span>
+          <span class="quote danger-quote">妻より話しやすい</span>
+          <span class="quote danger-quote">君だけが癒し</span>
+          <span class="quote danger-quote">帰したくない</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- セクション4: シチュエーション別 -->
+  <h2>
+    <svg class="icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+    シチュエーション別の注意点
+  </h2>
+  <div class="grid grid-2">
+    <!-- 食事中 -->
+    <div class="card">
+      <h3>🍽️ 1. 食事中</h3>
+      <p class="text-sub">話が深くなりやすい場面。心の距離が近づきすぎないよう注意。</p>
+      <ul class="cross-list">
+        <li>恋愛観・夫婦関係・過去の恋愛の話</li>
+        <li>寂しさや人生の不安の話</li>
+        <li>お酒を飲ませすぎる</li>
+        <li>終電を気にしない / 次の店に誘う</li>
+      </ul>
+      <div class="note-safe">
+        深い話になりすぎたら明るい話に戻す。
+      </div>
+    </div>
+
+    <!-- LINE -->
+    <div class="card">
+      <h3>📱 2. LINE</h3>
+      <p class="text-sub">会っていなくても親密さが育ちます。特に寝る前は感情が入りやすいです。</p>
+      <ul class="cross-list">
+        <li>毎日連絡 / おはよう・おやすみ</li>
+        <li>夜中に長文で相談に乗る</li>
+        <li>即レスし続ける</li>
+        <li>恋人っぽい絵文字 / 寂しい時の連絡</li>
+      </ul>
+      <div class="quote-list mt-4">
+        <span class="quote danger-quote">無理しないでね</span>
+        <span class="quote danger-quote">ちゃんと寝てね</span>
+      </div>
+    </div>
+
+    <!-- 相談に乗る時 -->
+    <div class="card">
+      <h3>💬 3. 相談に乗る時</h3>
+      <p class="text-sub">最も恋愛感情に変わりやすい場面の一つです。</p>
+      <ul class="cross-list">
+        <li>全部受け止める / 相手の味方だけをする</li>
+        <li>相手の夫・彼氏を下げる</li>
+        <li>「俺ならそんな思いさせない」と言う</li>
+        <li>毎回長時間 / 夜遅くまで付き合う</li>
+      </ul>
+      <div class="note-safe">
+        <div class="note-safe-title">安全な対応</div>
+        「一人で抱え込まず、友達にも話してみてね」と、自分だけが支えになる状態を作らない。
+      </div>
+    </div>
+
+    <!-- 帰り際 -->
+    <div class="card">
+      <h3>👋 4. 帰り際</h3>
+      <p class="text-sub">感情が動きやすく「離れたくない」と思わせやすい場面。</p>
+      <ul class="cross-list">
+        <li>まだ帰りたくない・もう少し一緒にいたい</li>
+        <li>送っていくと言って長く一緒にいる</li>
+        <li>別れ際に沈黙を作る / 見つめる</li>
+      </ul>
+      <div class="note-safe">
+        「今日はありがとう。気をつけて帰ってね。」と明るく切る。
+      </div>
+    </div>
+
+    <!-- 自宅・密室 -->
+    <div class="card">
+      <h3>🚪 5. 自宅・密室</h3>
+      <p class="text-sub">最も誤解や感情が生まれやすい場所です。</p>
+      <ul class="cross-list">
+        <li>相手の家に行く / 自分の家に呼ぶ</li>
+        <li>車内で長時間2人きり</li>
+        <li>個室居酒屋で長時間</li>
+        <li>ホテルラウンジや近くで会う</li>
+      </ul>
+      <p class="text-danger text-bold mt-4">※既婚が絡む場合は密室を避けるのが絶対条件。</p>
+    </div>
+
+    <!-- 職場 -->
+    <div class="card">
+      <h3>🏢 6. 職場・元職場</h3>
+      <p class="text-sub">先輩・上司への尊敬が恋愛に変わりやすいです。</p>
+      <ul class="cross-list">
+        <li>特定の女性だけ気にかける・差し入れ</li>
+        <li>他の人に見えないところで褒める</li>
+        <li>2人だけの秘密を作る</li>
+        <li>個別LINEが増える</li>
+      </ul>
+      <p class="text-danger mt-4">親切のつもりでも「特別扱い」に見えます。</p>
+    </div>
+  </div>
+
+  <!-- セクション5: 危険な行動の組み合わせ -->
+  <h2 class="danger-title">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z"/></svg>
+    行動の組み合わせ
+  </h2>
+  <div class="combo-box">
+    <p class="mb-4">単発なら普通でも、複数重なると女性の感情をかなり動かします。</p>
+    <div class="combo-formula">
+      <div class="combo-item">2人きり</div>
+      <div class="combo-plus">＋</div>
+      <div class="combo-item">夜</div>
+      <div class="combo-plus">＋</div>
+      <div class="combo-item">お酒</div>
+      <div class="combo-plus">＋</div>
+      <div class="combo-item">深い相談</div>
+      <div class="combo-plus">＋</div>
+      <div class="combo-item">特別扱い</div>
+      <div class="combo-plus">＋</div>
+      <div class="combo-item">帰り際の名残惜しさ</div>
+    </div>
+    <div class="combo-result">
+      ＝ 非常に危険（本気になりやすい）
+    </div>
+  </div>
+
+  <!-- セクション6: 男性が気をつけるべきこと & 判断基準 -->
+  <h2>
+    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+    男性が気を付けるべきこと
+  </h2>
+  <div class="card mb-4">
+    <div class="grid">
+      <div>
+        <h3>1. 優しさと特別扱いを混同しない</h3>
+        <p class="text-sub">優しくすること自体は悪くありませんが、女性が本気になるのは「特別扱い」です。</p>
+        <div class="comparison">
+          <div class="comp-item comp-normal">他の人にも同じようにする<br>＝ <strong>優しさ</strong></div>
+          <div class="comp-item comp-special">その女性だけに向ける<br>＝ <strong>特別扱い</strong></div>
+        </div>
+      </div>
+
+      <div>
+        <h3>2. その他の注意点</h3>
+        <ul class="cross-list">
+          <li><strong>自分だけが理解者にならない</strong><br><span class="text-sub">「俺だけは分かってる」は依存を生みます。</span></li>
+          <li><strong>配偶者や彼氏を下げない</strong><br><span class="text-sub">男性側が「理想の理解者」に見えてしまいます。</span></li>
+          <li><strong>家庭の不満を話しすぎない</strong><br><span class="text-sub">「私なら分かってあげられる」と感じさせます。</span></li>
+          <li><strong>夜・お酒・密室を重ねない</strong><br><span class="text-sub">昼に会う、短時間、個室を避けるだけでリスクは下がります。</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📝 迷った時の判断基準</h3>
+    <p class="text-sub mb-4">今の関係性に迷ったら、以下の質問に答えてみてください。</p>
+    <ul class="check-list" style="color: var(--text-main);">
+      <li>このLINEを自分の配偶者に見せられるか？</li>
+      <li>相手の夫や彼氏の前でも同じ態度を取れるか？</li>
+      <li>共通の知人に堂々と説明できるか？</li>
+      <li>相手が本気になった時に責任を取れるか？</li>
+      <li>その関係を公にできるか？</li>
+    </ul>
+    <div class="alert mt-4">
+      答えが一つでも<strong>「無理」</strong>なら、すでに距離が近すぎる可能性があります。
+    </div>
+  </div>
+
+  <!-- セクション7: まとめ -->
+  <div class="summary-box mt-4">
+    <h2 style="margin-top: 0; border: none; box-shadow: none; background: transparent; padding: 0;">まとめ：相手を守るために大事なこと</h2>
+    
+    <div class="grid grid-2 mt-4">
+      <div>
+        <h3 class="text-danger">本気にさせるNG行動</h3>
+        <ul class="cross-list">
+          <li>特別感を濃くしすぎる</li>
+          <li>常に深い相談相手になる</li>
+          <li>夜・お酒・密室を重ねる</li>
+          <li>恋人のような言葉を使う</li>
+          <li>帰り際に名残惜しさを出す</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-safe">安全な距離感</h3>
+        <ul class="check-list">
+          <li>優しさは見せるが、特別扱いはしない</li>
+          <li>第三者の相談窓口（友人等）を勧める</li>
+          <li>昼に、短時間で、オープンな場所で会う</li>
+          <li>明るくあっさりと別れる</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="summary-conclusion">
+      一番大事なのは、女性を本気にさせないためには<br>
+      <span class="text-danger" style="font-size: 1.3rem;">「期待させる距離まで近づかないこと」</span>です。
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
